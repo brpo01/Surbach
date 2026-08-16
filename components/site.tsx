@@ -26,7 +26,7 @@ export const insights = [
 
 export const team = [
   { name: 'Adoyi John Ochigbo', title: 'Executive Director | Integrated Water Resources Management & Sustainable Development Expert', bio: 'Leads SURBACH’s technical direction across water resources, climate resilience and sustainable development.', expertise: ['IWRM', 'Sustainable Development', 'Strategy'], image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/executive%20director-VEOLj1u3H9bpdJ1KN8uRx31m9lLhgy.jpeg' },
-  { name: 'Jonah Adole Ochigbo', title: 'Strategy & Operations Lead', bio: 'Supports organisational strategy, operations and coordination across SURBACH’s workstreams.', expertise: ['Strategy', 'Operations', 'Coordination'] },
+  { name: 'Jonah Adole Ochigbo', title: 'Strategy & Operations Lead', bio: 'Supports organisational strategy, operations and coordination across SURBACH’s workstreams.', expertise: ['Strategy', 'Operations', 'Coordination'], image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/dp_jonah-C83A1l7k8GOIt1TC9KelicLHBkYIpY.jpg' },
   { name: 'Maria Ada Ochigbo', title: 'Pharmacy & Public Health Specialist', bio: 'Contributes public-health and community wellbeing expertise to integrated development programmes.', expertise: ['Public Health', 'Community Wellbeing', 'Health Systems'] },
   { name: 'J. O. Adanu', title: 'ICT & Digital Solutions', bio: 'Supports digital systems, information management and technology-enabled delivery.', expertise: ['ICT', 'Digital Solutions', 'Information'] },
   { name: 'Eugenia Oshin', title: 'Geology & Environmental Specialist', bio: 'Contributes earth-science and environmental perspectives to basin and conservation work.', expertise: ['Geology', 'Environment', 'Field Science'] },
