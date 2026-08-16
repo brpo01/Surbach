@@ -1,0 +1,46 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@theme inline {
+  --font-montserrat: var(--font-montserrat), sans-serif;
+  --font-open-sans: var(--font-open-sans), sans-serif;
+  --font-mono: var(--font-open-sans), sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surbach-navy: #051841;
+  --color-surbach-blue: #114184;
+  --color-surbach-water: #189BE1;
+  --color-surbach-green: #5FB01B;
+  --color-surbach-light: #F5F7F9;
+  --color-border: #dbe3eb;
+  --radius-card: 12px;
+}
+
+:root { --background: #ffffff; --foreground: #051841; }
+
+@layer base {
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; background: #ffffff; }
+  body { @apply bg-background text-foreground; font-family: var(--font-open-sans), sans-serif; }
+}
+
+.font-montserrat { font-family: var(--font-montserrat), sans-serif; }
+.font-open-sans { font-family: var(--font-open-sans), sans-serif; }
+
+@layer components {
+  .button-primary { @apply inline-flex items-center gap-2 rounded-lg bg-surbach-water px-5 py-3 font-open-sans text-sm font-semibold text-white transition-colors hover:bg-surbach-blue; }
+  .button-secondary { @apply inline-flex items-center gap-2 rounded-lg border border-surbach-navy px-5 py-3 font-open-sans text-sm font-semibold text-surbach-navy transition-colors hover:bg-surbach-navy hover:text-white; }
+  .button-secondary-dark { @apply inline-flex items-center gap-2 rounded-lg border border-white/35 px-5 py-3 font-open-sans text-sm font-semibold text-white transition-colors hover:bg-white hover:text-surbach-navy; }
+  .section-eyebrow { @apply font-open-sans text-xs font-bold uppercase tracking-[0.18em]; }
+  .container-site { @apply mx-auto max-w-7xl px-4 md:px-6 lg:px-8; }
+}
+
+::selection { background: #189BE1; color: white; }
+:focus-visible { outline: 3px solid #189BE1; outline-offset: 3px; }
+
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+
+.hero-grid { background-image: linear-gradient(rgba(24,155,225,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(24,155,225,.08) 1px, transparent 1px); background-size: 42px 42px; }
+
+@media print { header, footer { display: none; } }
