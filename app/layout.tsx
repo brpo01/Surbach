@@ -2,6 +2,7 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Montserrat, Open_Sans } from 'next/font/google'
 import './globals.css'
+import { TermsConsent } from '@/components/terms-consent'
 
 const montserrat = Montserrat({ subsets: ['latin'], variable: '--font-montserrat', display: 'swap' })
 const openSans = Open_Sans({ subsets: ['latin'], variable: '--font-open-sans', display: 'swap' })
@@ -17,5 +18,5 @@ export const metadata: Metadata = {
 export const viewport: Viewport = { colorScheme: 'light', themeColor: '#051841', width: 'device-width', initialScale: 1 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en" className={`${montserrat.variable} ${openSans.variable}`}><body className="antialiased">{children}{process.env.NODE_ENV === 'production' && <Analytics />}</body></html>
+  return <html lang="en" className={`${montserrat.variable} ${openSans.variable}`}><body className="antialiased">{children}<TermsConsent />{process.env.NODE_ENV === 'production' && <Analytics />}</body></html>
 }
