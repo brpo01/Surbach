@@ -1,5 +1,36 @@
-'use client'
-import { FormEvent } from 'react'
-import { Building2, Mail, MapPin, Phone } from 'lucide-react'
-import { Header, Footer, SectionHeading, CTASection } from '@/components/site'
-export default function ContactPage() { function submit(e: FormEvent<HTMLFormElement>) { e.preventDefault() } return <><Header /><main id="main-content"><section className="bg-surbach-navy"><div className="container-site py-16 md:py-24"><div className="section-eyebrow text-surbach-water">Contact SURBACH</div><h1 className="mt-5 max-w-3xl font-montserrat text-4xl font-semibold text-white md:text-5xl">Start a conversation about Basin-level impact.</h1><p className="mt-6 max-w-2xl font-open-sans text-lg leading-8 text-white/75">Tell us what you are working on, where you need support and what a useful next step would look like.</p></div></section><section className="container-site grid gap-14 py-20 md:py-28 lg:grid-cols-[1.1fr_.9fr]"><form onSubmit={submit} className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm md:p-8"><h2 className="font-montserrat text-2xl font-semibold text-surbach-navy">Partner With SURBACH</h2><div className="mt-8 grid gap-5 sm:grid-cols-2">{[['Full Name','text'],['Organisation','text'],['Email','email'],['Phone','tel']].map(([label,type]) => <label key={label} className="font-open-sans text-sm font-semibold text-surbach-navy">{label}<input required={label !== 'Phone'} type={type} className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-3 font-normal outline-none focus:border-surbach-water" /></label>)}<label className="font-open-sans text-sm font-semibold text-surbach-navy sm:col-span-2">Area of Interest<select className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-3 font-normal"><option>Partnership</option><option>Technical Advisory</option><option>Research</option><option>Project Development</option><option>Capacity Building</option><option>Media</option><option>General Enquiry</option></select></label><label className="font-open-sans text-sm font-semibold text-surbach-navy sm:col-span-2">Message<textarea rows={5} className="mt-2 w-full rounded-lg border border-slate-300 px-3 py-3 font-normal outline-none focus:border-surbach-water" /></label></div><button className="button-primary mt-6" type="submit">Send enquiry</button></form><div><SectionHeading eyebrow="Head office" title="Find the right starting point." description="Professional contact details can be added here as SURBACH’s communications channels are finalised." /><div className="mt-8 space-y-4">{[['Head Office','SUITE GF 007, AICL AREA 3 NEIGHBOURHOOD SHOPPING COMPLEX, ABUJA, FCT, NIGERIA',MapPin],['Email','hello@surbach.org',Mail],['Phone','Contact number to be added',Phone],['Organisation','Sustainable Development of River Basin, Climate Action and Health Solutions Ltd/Gte',Building2]].map(([title,value,Icon]) => <div key={title as string} className="flex gap-4 rounded-lg border border-slate-200 p-4"><Icon className="mt-1 text-surbach-water" size={19} /><div><div className="font-montserrat text-sm font-semibold text-surbach-navy">{title as string}</div><div className="mt-1 font-open-sans text-sm leading-6 text-slate-600">{value as string}</div></div></div>)}</div><div className="mt-8 flex aspect-[16/8] items-center justify-center rounded-xl border border-dashed border-slate-300 bg-surbach-light text-center"><div><MapPin className="mx-auto text-surbach-water" /><p className="mt-2 font-open-sans text-sm font-semibold text-surbach-navy">Map area</p><p className="mt-1 font-open-sans text-xs text-slate-500">Exact office location to be connected</p></div></div></div></section><CTASection dark /></main><Footer /></> }
+import Link from 'next/link'
+import { Mail, MapPin } from 'lucide-react'
+import { Header, Footer } from '@/components/site'
+
+export const metadata = { title: 'Contact SURBACH' }
+
+export default function ContactPage() {
+  return <>
+    <Header />
+    <main id="main-content">
+      <section className="bg-surbach-navy">
+        <div className="container-site py-16 md:py-24">
+          <div className="section-eyebrow text-surbach-water">Contact SURBACH</div>
+          <h1 className="mt-5 max-w-3xl font-montserrat text-4xl font-semibold text-white md:text-5xl">Start a conversation about Basin-level impact.</h1>
+          <p className="mt-6 max-w-2xl font-open-sans text-lg leading-8 text-white/75">Tell us what you are working on, where you need support and what a useful next step would look like.</p>
+        </div>
+      </section>
+      <section className="container-site grid gap-14 py-20 md:py-28 lg:grid-cols-[.8fr_1.2fr]">
+        <div>
+          <div className="section-eyebrow text-surbach-water">Get in touch</div>
+          <h2 className="mt-4 font-montserrat text-3xl font-semibold text-surbach-navy">Partner With SURBACH</h2>
+          <p className="mt-5 max-w-md font-open-sans leading-7 text-slate-600">Use the form to share your organisation, priorities and the opportunity you would like to explore with us.</p>
+          <div className="mt-10 space-y-5 font-open-sans text-sm text-slate-600">
+            <div className="flex items-start gap-3"><MapPin size={18} className="mt-1 shrink-0 text-surbach-water" /><span>No. 1, Ibadan Street, Suite GF007, AICL Area 3 Neighbourhood Shopping Centre, Garki, Abuja, FCT, Nigeria</span></div>
+            <a href="mailto:partnerships@surbach.org" className="flex items-center gap-3 transition-colors hover:text-surbach-blue"><Mail size={18} className="text-surbach-water" />partnerships@surbach.org</a>
+          </div>
+          <Link href="/partnerships" className="button-secondary mt-8 inline-flex">Explore partnership opportunities</Link>
+        </div>
+        <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeiKNapsxgRvjkKN4kLxhO7KTSq98xdDWNjTV7BLQJlzMdNtQ/viewform?embedded=true" title="Partner With SURBACH form" className="h-[955px] w-full" frameBorder="0" marginHeight={0} marginWidth={0}>Loading…</iframe>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </>
+}

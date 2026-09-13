@@ -1,5 +1,33 @@
-import { Building2, Landmark, GraduationCap, Handshake, HeartHandshake, Factory, Globe2, Users, Banknote } from 'lucide-react'
-import { Header, Footer, Hero, SectionHeading, CTASection, PartnerCategory } from '@/components/site'
+import { Building2, Landmark, GraduationCap, HeartHandshake, Factory, Globe2, Users, Banknote } from 'lucide-react'
+import { Header, Footer, Hero, SectionHeading, PartnerCategory } from '@/components/site'
+
 export const metadata = { title: 'Partnerships' }
-export default function PartnershipsPage() { const categories = [['Government', Landmark],['River Basin Development Authorities', WavesIcon],['Development Partners', Globe2],['Multilateral Institutions', Building2],['Climate & Development Finance', Banknote],['Research Institutions', GraduationCap],['Civil Society', HeartHandshake],['Private Sector', Factory],['Communities', Users]] as const; const ways = ['Technical Advisory','Research & Diagnostics','Programme Design','Project Development','Implementation Support','Capacity Building','Stakeholder Engagement']; return <><Header /><main id="main-content"><Hero eyebrow="Partnerships" title="Partnering for Basin-Level Impact" description="Development at Basin scale asks institutions to work across mandates, disciplines and geographies. SURBACH creates practical ways to do that well." /><section className="container-site py-20 md:py-28"><SectionHeading eyebrow="Who we work with" title="An institutional ecosystem, not a collection of silos." description="We collaborate with the organisations that shape policy, finance, knowledge, implementation and lived experience across Nigeria’s River Basins." /><div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{categories.map(([title, Icon]) => <PartnerCategory key={title} title={title} icon={Icon as typeof Building2} />)}</div></section><section className="bg-surbach-light py-20 md:py-28"><div className="container-site"><SectionHeading eyebrow="How we partner" title="Flexible support for the work in front of you." /><div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">{ways.map((way, i) => <div key={way} className="rounded-xl border border-slate-200 bg-white p-6"><span className="font-mono text-xs text-surbach-water">0{i+1}</span><h3 className="mt-5 font-montserrat font-semibold text-surbach-navy">{way}</h3><p className="mt-3 font-open-sans text-sm leading-6 text-slate-600">A focused, collaborative workstream shaped around the decision, institution or programme objective.</p></div>)}</div></div></section><CTASection dark /></main><Footer /></> }
+
+export default function PartnershipsPage() {
+  const categories = [['Government', Landmark], ['River Basin Development Authorities', WavesIcon], ['Development Partners', Globe2], ['Multilateral Institutions', Building2], ['Climate & Development Finance', Banknote], ['Research Institutions', GraduationCap], ['Civil Society', HeartHandshake], ['Private Sector', Factory], ['Communities', Users]] as const
+  const ways = ['Technical Advisory', 'Research & Diagnostics', 'Programme Design', 'Project Development', 'Implementation Support', 'Capacity Building', 'Stakeholder Engagement']
+
+  return <>
+    <Header />
+    <main id="main-content">
+      <Hero eyebrow="Partnerships" title="Partnering for Basin-Level Impact" description="Development at Basin scale asks institutions to work across mandates, disciplines and geographies. SURBACH creates practical ways to do that well." />
+      <section className="container-site py-20 md:py-28">
+        <SectionHeading eyebrow="Who we work with" title="An institutional ecosystem, not a collection of silos." description="We collaborate with the organisations that shape policy, finance, knowledge, implementation and lived experience across Nigeria’s River Basins." />
+        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{categories.map(([title, Icon]) => <PartnerCategory key={title} title={title} icon={Icon as typeof Building2} />)}</div>
+      </section>
+      <section className="bg-surbach-light py-20 md:py-28">
+        <div className="container-site">
+          <SectionHeading eyebrow="How we partner" title="Flexible support for the work in front of you." />
+          <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">{ways.map((way, i) => <div key={way} className="rounded-xl border border-slate-200 bg-white p-6"><span className="font-mono text-xs text-surbach-water">0{i + 1}</span><h3 className="mt-5 font-montserrat font-semibold text-surbach-navy">{way}</h3><p className="mt-3 font-open-sans text-sm leading-6 text-slate-600">A focused, collaborative workstream shaped around the decision, institution or programme in front of you.</p></div>)}</div>
+        </div>
+      </section>
+      <section id="partner-with-surbach" className="container-site scroll-mt-24 py-20 md:py-28">
+        <div className="mx-auto max-w-3xl text-center"><SectionHeading eyebrow="Partner With SURBACH" title="Start a conversation about Basin-level impact." description="Tell us about your organisation, priorities and the opportunity you would like to explore. We will review your enquiry and respond with the most appropriate next step." /></div>
+        <div className="mx-auto mt-12 max-w-3xl overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm"><iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeiKNapsxgRvjkKN4kLxhO7KTSq98xdDWNjTV7BLQJlzMdNtQ/viewform?embedded=true" title="Partner With SURBACH form" className="h-[955px] w-full" frameBorder="0" marginHeight={0} marginWidth={0}>Loading…</iframe></div>
+      </section>
+    </main>
+    <Footer />
+  </>
+}
+
 function WavesIcon(props: { size?: number }) { return <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8"><path d="M3 7c3-3 6 3 9 0s6 3 9 0M3 12c3-3 6 3 9 0s6 3 9 0M3 17c3-3 6 3 9 0s6 3 9 0" /></svg> }
