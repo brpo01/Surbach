@@ -32,7 +32,7 @@ export const team = [
   { name: 'Maria Ada Ochigbo', title: 'Pharmacy & Public Health Specialist', bio: 'Contributes public-health and community wellbeing expertise to integrated development programmes.', expertise: ['Public Health', 'Community Wellbeing', 'Health Systems'], image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/maria%20ochigbo-mjgIzsJYi3xfgy1j4uaEOYBR65LFFF.webp' },
   { name: 'J. O. Adanu', title: 'ICT & Digital Solutions', bio: 'Supports digital systems, information management and technology-enabled delivery.', expertise: ['ICT', 'Digital Solutions', 'Information'] },
   { name: 'Eugenia Oshin', title: 'Geology & Environmental Specialist', bio: 'Contributes earth-science and environmental perspectives to basin and conservation work.', expertise: ['Geology', 'Environment', 'Field Science'], image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/eugenia-JRAk176LYQddkoX5fkVYSIH7Gl90on.jpeg' },
-  { name: 'Eunice Odey', title: 'Social Wellbeing & Humanitarian Services', bio: 'Brings community-centred and humanitarian perspectives to resilience and inclusion.', expertise: ['Social Wellbeing', 'Humanitarian Services', 'Communities'] },
+  { name: 'Eunice Odey', title: 'Social Wellbeing & Humanitarian Services', bio: 'Brings community-centred and humanitarian perspectives to resilience and inclusion.', expertise: ['Social Wellbeing', 'Humanitarian Services', 'Communities'], image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/eunice-VxunvvvAyv3lWrrfwaZeGXcsAgaQY8.jpeg' },
 ]
 
 function Logo({ light = false }: { light?: boolean }) {
