@@ -1,20 +1,36 @@
-'use client'
-import { useState } from 'react'
 import Link from 'next/link'
-import { Building2, Mail, MapPin, Phone } from 'lucide-react'
-import { Header, Footer, CTASection } from '@/components/site'
+import { Mail, MapPin } from 'lucide-react'
+import { Header, Footer } from '@/components/site'
 
-const areas = ['Partnership', 'Technical Advisory', 'Research', 'Project Development', 'Capacity Building', 'Media', 'General Enquiry']
-const initialForm = { name: '', organisation: '', email: '', phone: '', area: 'Partnership', message: '', website: '' }
+export const metadata = { title: 'Contact SURBACH' }
 
 export default function ContactPage() {
-  const [form, setForm] = useState(initialForm)
-  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
-  const update = (key: keyof typeof form, value: string) => setForm((current) => ({ ...current, [key]: value }))
-  async function submit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault(); setStatus('sending')
-    const response = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(form) }).catch(() => null)
-    if (response?.ok) { setForm(initialForm); setStatus('success') } else setStatus('error')
-  }
-  return <><Header /><main id="main-content"><section className="bg-surbach-navy"><div className="container-site py-16 md:py-24"><div className="section-eyebrow text-surbach-water">Contact SURBACH</div><h1 className="mt-5 max-w-3xl font-montserrat text-4xl font-semibold text-white md:text-5xl">Start a conversation about Basin-level impact.</h1><p className="mt-6 max-w-2xl font-open-sans text-lg leading-8 text-white/75">Tell us what you are working on, where you need support and what a useful next step would look like.</p></div></section><section className="container-site grid gap-14 py-20 md:py-28 lg:grid-cols-[1.1fr_.9fr]">{status === 'success' ? <div className="rounded-xl border border-surbach-green/30 bg-surbach-green/5 p-8"><div className="section-eyebrow text-surbach-green">Enquiry received</div><h2 className="mt-3 font-montserrat text-3xl font-semibold text-surbach-navy">Thank you for contacting SURBACH.</h2><p className="mt-5 leading-7 text-slate-600">Your enquiry has been received successfully, and a confirmation has been sent to your email address.</p><p className="mt-3 leading-7 text-slate-600">Our team will review your message and respond where appropriate.</p><Link href="/" className="button-primary mt-8 inline-flex">Return to Home</Link></div> : <form onSubmit={submit} className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm md:p-8"><h2 className="font-montserrat text-2xl font-semibold text-surbach-navy">Partner With SURBACH</h2><div className="mt-8 grid gap-5 sm:grid-cols-2">{[['name','Full Name','text',true],['organisation','Organisation','text',false],['email','Email Address','email',true],['phone','Phone Number','tel',false]].map(([key,label,type,required]) => <label key={key as string} className="font-open-sans text-sm font-semibold text-surbach-navy">{label as string}<input name={key as string} value={form[key as keyof typeof form]} onChange={(e) => update(key as keyof typeof form, e.target.value)} required={required as boolean} type={type as string} className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-3 font-normal outline-none focus:border-surbach-water" /></label>)}<label className="font-open-sans text-sm font-semibold text-surbach-navy sm:col-span-2">Area of Interest<select name="area" value={form.area} onChange={(e) => update('area', e.target.value)} required className="mt-2 w-full rounded-lg border border-slate-300 bg-white px-3 py-3 font-normal">{areas.map((area) => <option key={area}>{area}</option>)}</select></label><label className="font-open-sans text-sm font-semibold text-surbach-navy sm:col-span-2">Message<textarea name="message" value={form.message} onChange={(e) => update('message', e.target.value)} required minLength={10} rows={5} className="mt-2 w-full rounded-lg border border-slate-300 px-3 py-3 font-normal outline-none focus:border-surbach-water" /></label><input aria-hidden="true" tabIndex={-1} autoComplete="off" name="website" value={form.website} onChange={(e) => update('website', e.target.value)} className="absolute -left-[9999px] h-px w-px" /><div className="sm:col-span-2">{status === 'error' && <p role="alert" className="mb-4 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-800">We couldn&apos;t send your enquiry. Please try again in a moment. If the problem continues, you can contact SURBACH directly by email.</p>}<button disabled={status === 'sending'} className="button-primary disabled:cursor-not-allowed disabled:opacity-60">{status === 'sending' ? 'Sending...' : 'Send Enquiry'}</button></div></div></form>}<aside><div className="rounded-xl border border-slate-200 bg-surbach-light p-7"><h2 className="font-montserrat text-2xl font-semibold text-surbach-navy">Head Office</h2><div className="mt-7 flex gap-4"><MapPin className="mt-1 shrink-0 text-surbach-water" size={18} /><p className="text-sm leading-6 text-slate-600">No. 1, Ibadan Street, Suite GF007, AICL Area 3 Neighbourhood Shopping Centre, Garki, Abuja, FCT, Nigeria</p></div><a href="mailto:info@surbach.org" className="mt-5 flex gap-4 text-sm text-surbach-blue"><Mail size={18} /> info@surbach.org</a><div className="mt-8 flex items-center gap-3 text-sm text-slate-500"><Building2 size={18} /> Map location available on request</div></div></aside></section></main><CTASection dark /><Footer /></>
+  return <>
+    <Header />
+    <main id="main-content">
+      <section className="bg-surbach-navy">
+        <div className="container-site py-16 md:py-24">
+          <div className="section-eyebrow text-surbach-water">Contact SURBACH</div>
+          <h1 className="mt-5 max-w-3xl font-montserrat text-4xl font-semibold text-white md:text-5xl">Start a conversation about Basin-level impact.</h1>
+          <p className="mt-6 max-w-2xl font-open-sans text-lg leading-8 text-white/75">Tell us what you are working on, where you need support and what a useful next step would look like.</p>
+        </div>
+      </section>
+      <section className="container-site grid gap-14 py-20 md:py-28 lg:grid-cols-[.8fr_1.2fr]">
+        <div>
+          <div className="section-eyebrow text-surbach-water">Get in touch</div>
+          <h2 className="mt-4 font-montserrat text-3xl font-semibold text-surbach-navy">Partner With SURBACH</h2>
+          <p className="mt-5 max-w-md font-open-sans leading-7 text-slate-600">Use the form to share your organisation, priorities and the opportunity you would like to explore with us.</p>
+          <div className="mt-10 space-y-5 font-open-sans text-sm text-slate-600">
+            <div className="flex items-start gap-3"><MapPin size={18} className="mt-1 shrink-0 text-surbach-water" /><span>No. 1, Ibadan Street, Suite GF007, AICL Area 3 Neighbourhood Shopping Centre, Garki, Abuja, FCT, Nigeria</span></div>
+            <a href="mailto:partnerships@surbach.org" className="flex items-center gap-3 transition-colors hover:text-surbach-blue"><Mail size={18} className="text-surbach-water" />partnerships@surbach.org</a>
+          </div>
+          <Link href="/partnerships" className="button-secondary mt-8 inline-flex">Explore partnership opportunities</Link>
+        </div>
+        <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+          <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeiKNapsxgRvjkKN4kLxhO7KTSq98xdDWNjTV7BLQJlzMdNtQ/viewform?embedded=true" title="Partner With SURBACH form" className="h-[955px] w-full" frameBorder="0" marginHeight={0} marginWidth={0}>Loading…</iframe>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </>
 }
