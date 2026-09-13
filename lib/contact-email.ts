@@ -1,8 +1,8 @@
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-const recipient = process.env.CONTACT_RECIPIENT_EMAIL || 'info@surbach.org'
-const sender = process.env.FROM_EMAIL || 'SURBACH Enquiries <info@surbach.org>'
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null
+const recipient = process.env.CONTACT_RECIPIENT_EMAIL || 'partnerships@surbach.org'
+const sender = process.env.FROM_EMAIL || 'SURBACH Enquiries <partnerships@surbach.org>'
 
 export const acknowledgementMessages: Record<string, string> = {
   Partnership: 'Thank you for your interest in partnering with SURBACH. We value opportunities to collaborate with governments, development partners, River Basin institutions, research organisations, civil society, communities and private-sector organisations working toward sustainable development. Our team will review your enquiry and consider how our respective capabilities and objectives may align. A member of the team will contact you regarding the next appropriate step.',
@@ -18,10 +18,12 @@ const escapeHtml = (value: string) => value.replace(/[&<>"']/g, (char) => ({ '&'
 const safe = (value: string | undefined) => escapeHtml((value || '').trim())
 
 export async function sendContactNotification(data: { name: string; organisation?: string; email: string; phone?: string; area: string; message: string }) {
+  if (!resend) throw new Error('Email delivery is not configured')
   return resend.emails.send({ from: sender, to: [recipient], replyTo: data.email, subject: `New SURBACH Enquiry — ${data.area} — ${data.name}`, html: `<div style="font-family:Arial,sans-serif;color:#051841;max-width:640px;margin:auto"><div style="background:#051841;padding:28px;color:#fff"><h1 style="margin:0;font-size:24px">New Website Enquiry</h1><p style="margin:8px 0 0;color:#b9e7fb">SURBACH · Sustainable River Basins, Climate &amp; Health Solutions</p></div><div style="padding:28px;background:#fff"><p><strong>Name:</strong> ${safe(data.name)}</p><p><strong>Organisation:</strong> ${safe(data.organisation) || 'Not provided'}</p><p><strong>Email:</strong> ${safe(data.email)}</p><p><strong>Phone:</strong> ${safe(data.phone) || 'Not provided'}</p><p><strong>Area of Interest:</strong> ${safe(data.area)}</p><p><strong>Message:</strong></p><div style="white-space:pre-wrap;border-left:3px solid #189BE1;padding:12px 16px;background:#f5f7f9">${safe(data.message)}</div><p style="color:#64748b;font-size:13px;margin-top:28px">Submitted: ${new Date().toISOString()}</p></div></div>` })
 }
 
 export async function sendContactAcknowledgement(data: { name: string; organisation?: string; email: string; area: string; message: string }) {
   const firstName = safe(data.name).split(' ')[0]
+  if (!resend) throw new Error('Email delivery is not configured')
   return resend.emails.send({ from: sender, to: [data.email], subject: 'Thank you for contacting SURBACH', html: `<div style="font-family:Arial,sans-serif;color:#051841;max-width:640px;margin:auto"><div style="background:#051841;padding:28px;color:#fff"><h1 style="margin:0;font-size:24px">SURBACH</h1><p style="margin:8px 0 0;color:#b9e7fb">Sustainable River Basins, Climate &amp; Health Solutions Ltd/Gte</p></div><div style="padding:28px;background:#fff"><p>Dear ${firstName},</p><p>Thank you for reaching out to SURBACH.</p><p>${acknowledgementMessages[data.area] || acknowledgementMessages['General Enquiry']}</p><h2 style="font-size:18px;color:#114184;margin-top:28px">Your Enquiry</h2><p><strong>Area of Interest:</strong> ${safe(data.area)}</p><p><strong>Organisation:</strong> ${safe(data.organisation) || 'Not provided'}</p><p><strong>Message:</strong></p><div style="white-space:pre-wrap;border-left:3px solid #5FB01B;padding:12px 16px;background:#f5f7f9">${safe(data.message)}</div><p>We appreciate your interest in SURBACH and in advancing resilient River Basins, healthier communities and sustainable development.</p><p>Kind regards,<br><strong>SURBACH</strong><br>Abuja, Nigeria<br>surbach.org</p><p style="color:#64748b;font-size:12px">This is an automated acknowledgement confirming receipt of your enquiry. A member of the SURBACH team will respond separately where appropriate.</p></div></div>` })
 }
