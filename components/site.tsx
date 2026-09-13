@@ -31,7 +31,7 @@ export const team = [
   { name: 'Jonah Adole Ochigbo', title: 'Strategy & Operations Lead', bio: 'Supports organisational strategy, operations and coordination across SURBACH’s workstreams.', expertise: ['Strategy', 'Operations', 'Coordination'], image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/dp_jonah-C83A1l7k8GOIt1TC9KelicLHBkYIpY.jpg' },
   { name: 'Maria Ada Ochigbo', title: 'Pharmacy & Public Health Specialist', bio: 'Contributes public-health and community wellbeing expertise to integrated development programmes.', expertise: ['Public Health', 'Community Wellbeing', 'Health Systems'], image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/maria%20ochigbo-mjgIzsJYi3xfgy1j4uaEOYBR65LFFF.webp' },
   { name: 'J. O. Adanu', title: 'ICT & Digital Solutions', bio: 'Supports digital systems, information management and technology-enabled delivery.', expertise: ['ICT', 'Digital Solutions', 'Information'] },
-  { name: 'Eugenia Oshin', title: 'Geology & Environmental Specialist', bio: 'Contributes earth-science and environmental perspectives to basin and conservation work.', expertise: ['Geology', 'Environment', 'Field Science'] },
+  { name: 'Eugenia Oshin', title: 'Geology & Environmental Specialist', bio: 'Contributes earth-science and environmental perspectives to basin and conservation work.', expertise: ['Geology', 'Environment', 'Field Science'], image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/eugenia-JRAk176LYQddkoX5fkVYSIH7Gl90on.jpeg' },
   { name: 'Eunice Odey', title: 'Social Wellbeing & Humanitarian Services', bio: 'Brings community-centred and humanitarian perspectives to resilience and inclusion.', expertise: ['Social Wellbeing', 'Humanitarian Services', 'Communities'] },
 ]
 
