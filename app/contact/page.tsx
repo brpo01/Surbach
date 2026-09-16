@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Mail, MapPin } from 'lucide-react'
+import { Mail, MapPin, Phone } from 'lucide-react'
 import { Header, Footer } from '@/components/site'
 
 export const metadata = { title: 'Contact SURBACH' }
@@ -21,8 +21,8 @@ export default function ContactPage() {
           <h2 className="mt-4 font-montserrat text-3xl font-semibold text-surbach-navy">Partner With SURBACH</h2>
           <p className="mt-5 max-w-md font-open-sans leading-7 text-slate-600">Use the form to share your organisation, priorities and the opportunity you would like to explore with us.</p>
           <div className="mt-10 space-y-5 font-open-sans text-sm text-slate-600">
-            <div className="flex items-start gap-3"><MapPin size={18} className="mt-1 shrink-0 text-surbach-water" /><span>No. 1, Ibadan Street, Suite GF007, AICL Area 3 Neighbourhood Shopping Centre, Garki, Abuja, FCT, Nigeria</span></div>
-            <a href="mailto:partnerships@surbach.org" className="flex items-center gap-3 transition-colors hover:text-surbach-blue"><Mail size={18} className="text-surbach-water" />partnerships@surbach.org</a>
+            <div className="flex items-start gap-3"><MapPin size={18} className="mt-1 shrink-0 text-surbach-water" /><span>No. 1 Ibadan Street, AICL Area 3 Neighborhood Shopping Complex, Garki, Abuja, FCT, Nigeria</span></div>
+            <a href="mailto:adoyiochigbo@surbach.org" className="flex items-center gap-3 transition-colors hover:text-surbach-blue"><Mail size={18} className="text-surbach-water" />adoyiochigbo@surbach.org</a><a href="mailto:info@surbach.org" className="flex items-center gap-3 transition-colors hover:text-surbach-blue"><Mail size={18} className="text-surbach-water" />info@surbach.org</a><a href="mailto:partnerships@surbach.org" className="flex items-center gap-3 transition-colors hover:text-surbach-blue"><Mail size={18} className="text-surbach-water" />partnerships@surbach.org</a><a href="tel:+2348036084809" className="flex items-center gap-3 transition-colors hover:text-surbach-blue"><Phone size={18} className="text-surbach-water" />+234 803 608 4809</a>
           </div>
           <Link href="/partnerships" className="button-secondary mt-8 inline-flex">Explore partnership opportunities</Link>
         </div>
